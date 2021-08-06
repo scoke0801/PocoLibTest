@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="Net::Send"
         android:textSize="30dp"
-        android:layout_margin="50dp"
+        android:layout_margin="40dp"
         android:onClick="onBtnSend"
         ></Button>
 
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:text="Net::Receive"
         android:textSize="30dp"
-        android:layout_margin="50dp"
+        android:layout_margin="40dp"
         android:onClick="onBtnReceive"
         ></Button>
 
@@ -34,7 +34,16 @@
         android:text="Logger::Log"
         android:textSize="30dp"
         android:onClick="onBtnLog"
-        android:layout_margin="50dp"></Button>
+        android:layout_margin="40dp"></Button>
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Input Here"
+        android:textSize="30dp"
+        android:layout_margin="40dp"
+        ></EditText>
 
     <TextView
         android:id="@+id/ResultText"
@@ -42,5 +51,5 @@
         android:layout_height="wrap_content"
         android:text= ""
         android:textSize="30dp"
-        android:layout_margin="50dp"></TextView>
+        android:layout_margin="40dp"></TextView>
 </LinearLayout>

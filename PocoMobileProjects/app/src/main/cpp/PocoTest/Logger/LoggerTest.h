@@ -72,9 +72,8 @@ public:  // 주된 역할을 하는 함수들
     // 로그 작성
     void WriteLog(const std::string &loggerName, const std::string &text);
 
-    void
-    WriteLog(const std::string &loggerName, const std::string &text, const std::string &file,
-             int codeLine);
+    void WriteLog(const std::string &loggerName, const std::string &text,
+            const std::string &file, int codeLine);
 
     void WriteLog(const std::string &loggerName, const Poco::Message &msg);
 

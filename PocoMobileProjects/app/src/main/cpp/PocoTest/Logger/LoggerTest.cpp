@@ -3,6 +3,11 @@
 //
 
 #include "LoggerTest.h"
+#include "Poco/File.h"
+
+#include "Poco/Path.h"
+#include <iostream>
+#include <asm/fcntl.h>
 
 constexpr int MIN_PRIORITY = 1;
 constexpr int MAX_PRIORITY = 8;
@@ -43,9 +48,8 @@ std::string g_ValidLogLevels[] = {
         "trace",
 };
 
-std::string g_LogDirPath = "Logs";
-
-
+//std::string g_LogDirPath = "/data/user/0/com.seerlsab.pocoMobileSample/files";
+std::string g_LogDirPath = "storage/emulated/0/Android/data/com.seerlsab.pocoMobileSample/cache";
 LogHandler::LogHandler()
 {
     CreateDirectoryForLog(g_LogDirPath);
@@ -114,11 +118,10 @@ bool LogHandler::SetFormatter(const std::string& loggerName, Channel channelName
 void LogHandler::CreateDirectoryForLog(const std::string& path)
 {
     Poco::File logDir(path);
-    //logDir.createDirectories();
+    logDir.createDirectories();
 }
 
-void LogHandler::WriteLog(const std::string& loggerName, const std::string& text)
-{
+void LogHandler::WriteLog(const std::string& loggerName, const std::string& text) {
     if (false == IsValidLoggerName(loggerName)) {
         return;
     }
@@ -147,6 +150,7 @@ void LogHandler::WriteLog(const std::string& loggerName, const Poco::Message& ms
     if (false == IsValidLoggerName(loggerName)) {
         return;
     }
+    auto isExist = m_Loggers[loggerName];
     m_Loggers[loggerName]->log(msg);
 }
 
@@ -247,7 +251,7 @@ void LogHandler::BuildBasicLogger()
 
     {
         property = {0};
-        fileName = "File";
+        fileName = "FileLog";
         strcpy(property.path, Poco::format("%s/%s.log", g_LogDirPath, fileName).c_str());
 
         GetLogger("File");
